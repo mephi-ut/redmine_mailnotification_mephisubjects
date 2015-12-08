@@ -40,7 +40,7 @@ module MailNotificationMephiSubjects
 
 			end
 
-			def issue_edit_with_mephisubjects(issue, to_users, cc_users)
+			def issue_edit_with_mephisubjects(journal, to_users, cc_users)
 				issue = journal.journalized
 				redmine_headers 'Project' => issue.project.identifier,
 						'Issue-Id' => issue.id,
