@@ -50,7 +50,7 @@ module MailNotificationMephiSubjects
 				references issue
 				@author = journal.user
 				s = "[#{issue.project.name} - #{issue.tracker.name} ##{issue.id}] "
-				s = "##{issue.id}] " if issue.project.parent_id == 12761
+				s = "[##{issue.id}] " if issue.project.parent_id == 12761
 				s << "(#{issue.status.name}) " if journal.new_value_for('status_id')
 				s << issue.subject
 				@issue = issue
