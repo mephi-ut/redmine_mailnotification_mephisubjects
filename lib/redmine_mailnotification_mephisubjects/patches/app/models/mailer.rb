@@ -27,6 +27,11 @@ module MailNotificationMephiSubjects
 				references issue
 				@author = issue.author
 				@issue = issue
+				if @issue.project.id == 15971
+					puts "Skipping notification for issue: #{@issue.to_yaml}"
+					return
+				end
+
 				@users = to_users + cc_users
 				@issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
 				@subject = "[#{issue.project.name} - #{issue.tracker.name} ##{issue.id}] (#{issue.status.name}) #{issue.subject}"
@@ -54,6 +59,11 @@ module MailNotificationMephiSubjects
 				s << "(#{issue.status.name}) " if journal.new_value_for('status_id')
 				s << issue.subject
 				@issue = issue
+				if @issue.project.id == 15971
+					puts "Skipping notification for issue: #{@issue.to_yaml}"
+					return
+				end
+
 				@users = to_users + cc_users
 				@journal = journal
 				@journal_details = journal.visible_details(@users.first)
